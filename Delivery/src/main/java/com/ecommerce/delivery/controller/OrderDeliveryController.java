@@ -1,4 +1,4 @@
 package com.ecommerce.delivery.controller;
 
-public class OrderController {
+public class OrderDeliveryController {
 }

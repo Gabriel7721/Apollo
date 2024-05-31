@@ -1,6 +1,6 @@
-package com.ecommerce.customer.config;
+package com.ecommerce.delivery.config;
 
-import com.ecommerce.library.model.Customer;
+import com.ecommerce.library.model.DeliveryPerson;
 import com.ecommerce.library.model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomerDetails implements UserDetails {
-    private Customer customer;
+public class DeliveryDetails implements UserDetails {
+    private DeliveryPerson deliveryPerson;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for(Role role : customer.getRoles()){
+        for(Role role : deliveryPerson.getRoles()){
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
@@ -24,12 +24,12 @@ public class CustomerDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return customer.getPassword();
+        return deliveryPerson.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return customer.getUsername();
+        return deliveryPerson.getUsername();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.ecommerce.library.service.impl;
 
 import com.ecommerce.library.dto.DeliveryPersonDto;
-import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.DeliveryPerson;
 import com.ecommerce.library.repository.DeliveryPersonRepository;
 import com.ecommerce.library.repository.RoleRepository;
