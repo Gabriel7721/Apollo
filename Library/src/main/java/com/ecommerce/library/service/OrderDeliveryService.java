@@ -10,6 +10,4 @@ public interface OrderDeliveryService {
     OrderDelivery saveOrderDelivery(Order order, DeliveryPerson deliveryPerson);
 
     OrderDelivery changeStatus(OrderDeliveryDto orderDeliveryDto);
-
-
 }

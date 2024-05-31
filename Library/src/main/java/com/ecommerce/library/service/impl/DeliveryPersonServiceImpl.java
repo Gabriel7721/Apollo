@@ -39,7 +39,6 @@ public class DeliveryPersonServiceImpl implements DeliveryPersonService {
         DeliveryPerson deliveryPerson = deliveryPersonRepository.findByUsername(deliveryPersonDto.getUsername());
         deliveryPerson.setAddress(deliveryPersonDto.getAddress());
         deliveryPerson.setPhoneNumber(deliveryPersonDto.getPhoneNumber());
-
         return deliveryPersonRepository.save(deliveryPerson);
     }
 
