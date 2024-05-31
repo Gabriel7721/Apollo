@@ -11,6 +11,7 @@
         <module>Library</module>
         <module>Admin</module>
         <module>Customer</module>
+        <module>Delivery</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
