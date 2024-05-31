@@ -30,5 +30,4 @@ public class OrderDelivery {
     private Date assignedDate;
 
     private String status;
-    private boolean isAccept;
 }

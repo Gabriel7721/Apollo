@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,6 +35,8 @@ public class DeliveryPerson {
 
     @OneToMany(mappedBy = "deliveryPerson", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<OrderDelivery> orderDeliveries;
+    @OneToMany(mappedBy = "deliveryPerson", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     @Override
     public String toString() {

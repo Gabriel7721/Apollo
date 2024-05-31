@@ -5,6 +5,7 @@ import com.ecommerce.library.model.DeliveryPerson;
 import com.ecommerce.library.model.Order;
 import com.ecommerce.library.model.OrderDelivery;
 import com.ecommerce.library.repository.OrderDeliveryRepository;
+import com.ecommerce.library.repository.OrderRepository;
 import com.ecommerce.library.service.OrderDeliveryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,21 @@ import java.util.Date;
 public class OrderDeliveryServiceImpl implements OrderDeliveryService {
 
     private final OrderDeliveryRepository orderDeliveryRepository;
+    private final OrderRepository orderRepository;
     private OrderDelivery orderDelivery;
 
     @Override
     public OrderDelivery saveOrderDelivery(Order order, DeliveryPerson deliveryPerson) {
+        Date date = new Date();
         OrderDelivery orderDelivery = new OrderDelivery();
         orderDelivery.setOrder(order);
         orderDelivery.setDeliveryPerson(deliveryPerson);
-        orderDelivery.setAssignedDate(new Date());
+//        orderDelivery.setStatus("Processing");
         orderDelivery.setStatus("Pending");
-        orderDelivery.setAccept(false);
+        orderDelivery.setAssignedDate(date);
+        order.setDeliveryDate(date);
+
+        orderRepository.save(order);
         return orderDeliveryRepository.save(orderDelivery);
     }
 
