@@ -26,12 +26,19 @@ public class OrderDeliveryServiceImpl implements OrderDeliveryService {
         OrderDelivery orderDelivery = new OrderDelivery();
         orderDelivery.setOrder(order);
         orderDelivery.setDeliveryPerson(deliveryPerson);
-//        orderDelivery.setStatus("Processing");
         orderDelivery.setStatus("Pending");
         orderDelivery.setAssignedDate(date);
-        order.setDeliveryDate(date);
 
-        orderRepository.save(order);
+        // Fetch the existing order from the database
+        Order existingOrder = orderRepository.findById(order.getId())
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        // Update only the deliveryDate field
+        existingOrder.setDeliveryDate(date);
+
+        // Save the updated order
+        orderRepository.save(existingOrder);
+
         return orderDeliveryRepository.save(orderDelivery);
     }
 

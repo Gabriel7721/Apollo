@@ -4,6 +4,7 @@ import com.ecommerce.library.dto.CustomerDto;
 import com.ecommerce.library.dto.DeliveryPersonDto;
 import com.ecommerce.library.model.City;
 import com.ecommerce.library.model.Country;
+import com.ecommerce.library.model.DeliveryPerson;
 import com.ecommerce.library.service.CityService;
 import com.ecommerce.library.service.CountryService;
 import com.ecommerce.library.service.DeliveryPersonService;
@@ -34,8 +35,8 @@ public class DeliveryPersonController {
             return "redirect:/login";
         }
         String username = principal.getName();
-        DeliveryPersonDto deliveryPersonDto = deliveryPersonService.getDeliveryPerson(username);
-        model.addAttribute("deliveryPerson", deliveryPersonDto);
+        DeliveryPerson deliveryPerson = deliveryPersonService.getDeliveryPerson(username);
+        model.addAttribute("deliveryPerson", deliveryPerson);
         model.addAttribute("title", "Profile");
         model.addAttribute("page", "Profile");
         return "rider-information";
@@ -52,12 +53,12 @@ public class DeliveryPersonController {
             return "redirect:/login";
         }
         String username = principal.getName();
-        DeliveryPersonDto deliveryPerson = deliveryPersonService.getDeliveryPerson(username);
+        DeliveryPerson  deliveryPerson = deliveryPersonService.getDeliveryPerson(username);
         if (result.hasErrors()) {
             return "rider-information";
         }
         deliveryPersonService.update(deliveryPersonDto);
-        DeliveryPersonDto deliveryUpdate = deliveryPersonService.getDeliveryPerson(principal.getName());
+        DeliveryPerson deliveryUpdate = deliveryPersonService.getDeliveryPerson(principal.getName());
         attributes.addFlashAttribute("success", "Update successfully!");
         model.addAttribute("deliveryPerson", deliveryUpdate);
         return "redirect:/profile";
@@ -84,7 +85,7 @@ public class DeliveryPersonController {
         if (principal == null) {
             return "redirect:/login";
         } else {
-            DeliveryPersonDto rider = deliveryPersonService.getDeliveryPerson(principal.getName());
+            DeliveryPerson rider = deliveryPersonService.getDeliveryPerson(principal.getName());
             if (passwordEncoder.matches(oldPassword, rider.getPassword())
                     && !passwordEncoder.matches(newPassword, oldPassword)
                     && !passwordEncoder.matches(newPassword, rider.getPassword())

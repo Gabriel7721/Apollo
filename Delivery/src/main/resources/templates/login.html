@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+<!--<head th:replace="~{fragments::head}">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Start Main Top &ndash;&gt;-->
+<!--<div th:replace="~{fragments::main-top}">-->
+
+<!--</div>-->
+<!--&lt;!&ndash; End Main Top &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start Main Top &ndash;&gt;-->
+<!--<header th:replace="~{fragments::main-header}" >-->
+<!--</header>-->
+<!--&lt;!&ndash; End Main Top &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start Top Search &ndash;&gt;-->
+<!--<div th:replace="~{fragments::top-search}">-->
+<!--</div>-->
+<!--&lt;!&ndash; End Top Search &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start All Title Box &ndash;&gt;-->
+<!--<div th:replace="~{fragments :: all-title-box}">-->
+<!--</div>-->
+<!--&lt;!&ndash; End All Title Box &ndash;&gt;-->
+
+<section id="login-form">
+    <div class="noi-dung">
+        <div class="form">
+            <h2>Log In</h2>
+            <div th:if = "${param.error}" class="alert alert-danger text-center">
+                Invalid username or password
+            </div>
+            <div th:if = "${param.logout}" class="alert alert-success text-center">
+                You have been logged out!
+            </div>
+            <form th:action="@{/do-login}" method="post">
+                <div class="input-form">
+                    <input type="text" placeholder="Name" name="username" required>
+                </div>
+                <div class="input-form">
+                    <input type="password" placeholder="Password" name="password">
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Log In">
+                </div>
+                <div class="input-form">
+                    <p>Do You Already Have An Account ? <a th:href="@{/register}">Sign up now  </a></p>
+                </div>
+            </form>
+            <h3>Log In With Social Network</h3>
+            <ul class="icon-dang-nhap">
+                <li><i class="fab fa-facebook-f"></i></li>
+                <li><i class="fab fa-google"></i></li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<!--</section>-->
+<!--&lt;!&ndash; Start copyright  &ndash;&gt;-->
+<!--<footer th:replace="~{fragments::footer}"></footer>-->
+<!--&lt;!&ndash; End copyright  &ndash;&gt;-->
+
+<!--<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>-->
+
+<!--&lt;!&ndash; ALL JS FILES &ndash;&gt;-->
+<!--<div th:replace="~{fragments::script}"></div>-->
+<!--</body>-->
+
+</html>

@@ -11,8 +11,8 @@ public interface DeliveryPersonService {
 
     DeliveryPerson update(DeliveryPersonDto deliveryPersonDto);
 
-    DeliveryPerson changePass(DeliveryPersonDto deliveryPersonDto);
+    DeliveryPerson changePass(DeliveryPerson deliveryPersonDto);
 
-    DeliveryPersonDto getDeliveryPerson(String username);
+    DeliveryPerson getDeliveryPerson(String username);
 
 }

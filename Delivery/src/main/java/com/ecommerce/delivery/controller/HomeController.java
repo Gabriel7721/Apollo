@@ -1,10 +1,9 @@
 package com.ecommerce.delivery.controller;
 
-import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.DeliveryPerson;
-import com.ecommerce.library.model.ShoppingCart;
-import com.ecommerce.library.service.CustomerService;
+import com.ecommerce.library.model.Order;
 import com.ecommerce.library.service.DeliveryPersonService;
+import com.ecommerce.library.service.OrderService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,19 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class HomeController {
     private final DeliveryPersonService deliveryPersonService;
+    private final OrderService orderService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String home(Model model, Principal principal, HttpSession session) {
         model.addAttribute("title", "Home");
         model.addAttribute("page", "Home");
+        model.addAttribute("order", orderService.findALlOrders());
         if (principal != null) {
-            DeliveryPerson rider = deliveryPersonService.findByUsername(principal.getName());
-            session.setAttribute("username", rider.getFirstName() + " " + rider.getLastName());
+            String username = principal.getName();
+            DeliveryPerson deliveryPerson = deliveryPersonService.getDeliveryPerson(username);
+            model.addAttribute("deliveryPerson", deliveryPerson);
+//            session.setAttribute("username", rider.getFirstName() + " " + rider.getLastName());
+//            session.setAttribute("riderEmail", deliveryPerson.getUsername());
         }
         return "home";
     }

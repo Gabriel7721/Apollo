@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<!--<head th:replace="~{fragments::head}">-->
+
+
+<!--</head>-->
+
+<body>
+<!--<div th:replace="~{fragments::main-top}"></div>-->
+<!--&lt;!&ndash; End Main Top &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start Main Top &ndash;&gt;-->
+<!--<header th:replace="~{fragments::main-header}"></header>-->
+<!--&lt;!&ndash; End Main Top &ndash;&gt;-->
+
+<!--&lt;!&ndash; Start Top Search &ndash;&gt;-->
+<!--<div th:replace="~{fragments::top-search}">-->
+<!--</div>-->
+<!--&lt;!&ndash; End Top Search &ndash;&gt;-->
+
+<!-- Start Slider -->
+<!--<div id="slides-shop" class="cover-slides">-->
+<!--    <ul class="slides-container">-->
+<!--        <li class="text-center">-->
+<!--            <img src="images/home-big-ad1.jpg" alt="">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <h1 class="m-b-20"><strong>Welcome To <br> Apollo</strong></h1>-->
+<!--                        <p class="m-b-40">Enjoy your favourite books! <br> Have you a good, fun working day and-->
+<!--                            fantastic reading!</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="text-center">-->
+<!--            <img src="images/home-big-ad2.jpg" alt="">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <h1 class="m-b-20"><strong>Welcome To <br> Apollo</strong></h1>-->
+<!--                        <p class="m-b-40">Enjoy your favourite books! <br> Have you a good, fun working day and-->
+<!--                            fantastic reading!</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="text-center">-->
+<!--            <img src="images/home-big-ad3.jpg" alt="">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+
+<!--                        <h1 class="m-b-20"><strong>Welcome To <br> Apollo</strong></h1>-->
+<!--                        <p class="m-b-40">Enjoy your favourite books! <br> Have you a good, fun working day and-->
+<!--                            fantastic reading!</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <div class="slides-navigation">-->
+<!--        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
+<!--        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End Slider &ndash;&gt;-->
+
+
+<!--&lt;!&ndash; Start About Page  &ndash;&gt;-->
+<!--<div class="about-box-main">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6">-->
+<!--                <div class="banner-frame"><img class="img-fluid" src="images/Intro.png" alt=""/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <h2 class="noo-sh-title-top">We are <span>Apollo</span></h2>-->
+<!--                <p>Books are our only business. Having spent many years in the book industry, we know where to find the-->
+<!--                    best books. Book Haven deals only with reputable publishers and reliable distributors. We handle-->
+<!--                    quality books that we would recommend to our friends and family. If it is good enough for our-->
+<!--                    shelves, you will want it on yours!</p>-->
+<!--                <p>At Apollo, you can choose from the best of both worlds. Here, guests are invited on an adventure-->
+<!--                    in great literature. We will create a memorable experience for you.</p>-->
+<!--                <p>Our collection is both classic and modern, featuring everything from light reads to indulgent-->
+<!--                    literary masterpieces. We deliver more than just incredible books: We create remarkable reading-->
+<!--                    experiences.</p>-->
+<!--                <a class="btn hvr-hover" href="#">Read More</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row my-5">-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>We are Trusted</h3>-->
+<!--                    <p>Apollo deals only with high-end processors and reliable importers.-->
+<!--                        We handle quality products that we would serve to our friends and family. </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>We are Professional</h3>-->
+<!--                    <p>Here, guests are invited on an adventure in great literature. We will create a great experience-->
+<!--                        for you. We deliver more than just incredible books: We create remarkable reading-->
+<!--                        experiences.</p>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>We are Expert</h3>-->
+<!--                    <p>We have spent many years in the book business, and we know where to find the best books. Our collection is both classic and modern, featuring everything from light reads to indulgent literary masterpieces.</p>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<section>
+
+
+    <table>
+        <tr>
+            <th>OrderID</th>
+            <th>Price</th>
+            <th>Address-To</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="o: ${order}">
+            <td th:text="${o.id}"></td>
+            <td th:text="${o.totalPrice}"></td>
+            <td></td>
+<!--            <td>-->
+<!--                &lt;!&ndash; Update this line to include the necessary parameters in the href attribute &ndash;&gt;-->
+<!--                <a th:href="@{/save-order-delivery(action='create', deliveryPersonId=${riderEmail}, orderId=${o.id})}">Save Order Delivery</a>-->
+<!--            </td>-->
+            <td>
+                <form th:action="@{/save-order-delivery(action='create')}" method="post">
+                    <input type="hidden" name="deliveryPersonId" th:value="${deliveryPerson.username}" />
+                    <input type="hidden" name="orderId" th:value="${o.id}" />
+                    <button type="submit">Save Order Delivery</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <p th:text="${deliveryPerson.username}"></p>
+<!--    th:text="${o.customer.address}"-->
+
+</section>
+
+
+
+
+
+<!--&lt;!&ndash; Start Feed  &ndash;&gt;-->
+<!--<div th:replace="~{fragments::instagram-box}">-->
+<!--</div>-->
+
+<!--&lt;!&ndash; End Feed  &ndash;&gt;-->
+
+
+<!--&lt;!&ndash; Start Footer  &ndash;&gt;-->
+<!--<footer th:replace="~{fragments::footer}">-->
+
+<!--</footer>-->
+
+
+<!--&lt;!&ndash; ALL JS FILES &ndash;&gt;-->
+<!--<div th:replace="~{fragments::script}"></div>-->
+</body>
+
+</html>

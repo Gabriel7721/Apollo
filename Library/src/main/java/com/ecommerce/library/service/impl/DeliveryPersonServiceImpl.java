@@ -42,14 +42,14 @@ public class DeliveryPersonServiceImpl implements DeliveryPersonService {
     }
 
     @Override
-    public DeliveryPerson changePass(DeliveryPersonDto deliveryPersonDto) {
+    public DeliveryPerson changePass(DeliveryPerson deliveryPersonDto) {
         DeliveryPerson deliveryPerson = deliveryPersonRepository.findByUsername(deliveryPersonDto.getUsername());
         deliveryPerson.setPassword(deliveryPersonDto.getPassword());
         return deliveryPersonRepository.save(deliveryPerson);
     }
 
     @Override
-    public DeliveryPersonDto getDeliveryPerson(String username) {
+    public DeliveryPerson getDeliveryPerson(String username) {
         DeliveryPersonDto deliveryPersonDto = new DeliveryPersonDto();
         DeliveryPerson deliveryPerson = deliveryPersonRepository.findByUsername(username);
         deliveryPersonDto.setFirstName(deliveryPerson.getFirstName());
@@ -58,6 +58,6 @@ public class DeliveryPersonServiceImpl implements DeliveryPersonService {
         deliveryPersonDto.setPassword(deliveryPerson.getPassword());
         deliveryPersonDto.setAddress(deliveryPerson.getAddress());
         deliveryPersonDto.setPhoneNumber(deliveryPerson.getPhoneNumber());
-        return deliveryPersonDto;
+        return deliveryPerson;
     }
 }

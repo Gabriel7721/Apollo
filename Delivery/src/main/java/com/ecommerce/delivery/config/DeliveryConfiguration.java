@@ -45,7 +45,7 @@ public class DeliveryConfiguration {
                 .authorizeHttpRequests( author ->
                         author.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/*", "/order_delivery_detail/**").permitAll()
-                                .requestMatchers("/delivery/**", "/find-order_delivery/**").hasAuthority("RIDER")
+                                .requestMatchers("/delivery/**", "/find_order_delivery/**").hasAuthority("RIDER")
                 )
                 .formLogin(login ->
                         login.loginPage("/login")
